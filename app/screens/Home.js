@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
+import { Header } from '../components/Header';
 import { Container } from '../components/Container';
 import { Logo } from '../components/Logo';
 import { InputWidthButton } from '../components/TextInput/';
@@ -30,10 +31,15 @@ class Home extends Component {
     console.log('press swap currency');
   };
 
+  handleOptionPress = () => {
+    console.log('press gear icon');
+  };
+
   render() {
     return (
       <Container>
         <StatusBar translucent={false} barStyle="light-content" />
+        <Header onPress={this.handleOptionPress} />
         <Logo />
         <InputWidthButton
           onPress={this.handlePressBaseCurrency}

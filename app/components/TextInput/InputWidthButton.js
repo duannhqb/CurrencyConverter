@@ -15,7 +15,7 @@ const InputWidthButton = (props) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={containerStyles}>
       <TouchableHighlight
         underlayColor={underlayColor}
         style={styles.buttonContainer}

@@ -7,7 +7,9 @@ EStyleSheet.build({
   $white: '#FFFFFF',
   $border: '#E5E5E5',
   $inputText: '#797979',
-  $lightGray: '#E3E3E3',
+  $lightGray: '#F0F0F0',
+
+  // $outline: 1,
 });
 
 export default () => <Home />;
