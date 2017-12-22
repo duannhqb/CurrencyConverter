@@ -37,7 +37,7 @@ class Home extends Component {
   };
 
   handleOptionPress = () => {
-    console.log('press gear icon');
+    this.props.navigation.navigate('Options');
   };
 
   render() {
