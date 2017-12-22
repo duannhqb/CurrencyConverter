@@ -9,6 +9,7 @@ import { InputWidthButton } from '../components/TextInput/';
 import { ClearButton } from '../components/Buttons';
 import { LastConverted } from '../components/Text';
 import { swapCurrency, changeCurrencyAmount, getInitialConversion } from '../actions/currencies';
+import { connectAlert } from '../components/Alert';
 
 class Home extends Component {
   static propTypes = {
@@ -21,10 +22,17 @@ class Home extends Component {
     isFetching: PropTypes.bool,
     lastConvertedDate: PropTypes.object,
     primaryColor: PropTypes.string,
+    currencyError: PropTypes.string,
+    alertWithType: PropTypes.func,
   };
 
   componentWillMount() {
     this.props.dispatch(getInitialConversion());
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.currencyError && !this.props.currencyError) {
+      this.props.alertWithType('error', 'Error', nextProps.currencyError);
+    }
   }
 
   handlePressBaseCurrency = () => {
@@ -100,7 +108,8 @@ const mapStateToProps = (state) => {
     isFetching: conversionSelector.isFetching,
     lastConvertedDate: conversionSelector.date ? new Date(conversionSelector.date) : new Date(),
     primaryColor: state.theme.primaryColor,
+    currencyError: state.currencies.error,
   };
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(connectAlert(Home));
