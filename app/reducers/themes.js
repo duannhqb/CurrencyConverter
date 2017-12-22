@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
     case CHANGE_PRIMARY_COLOR:
       return {
         ...state,
-        color: action.color,
+        primaryColor: action.color,
       };
     default:
       return state;

@@ -14,6 +14,12 @@ const InputWidthButton = (props) => {
     containerStyles.push(styles.containerDisabled);
   }
 
+  const buttonTextStyles = [styles.buttonText];
+
+  if (props.textColor) {
+    buttonTextStyles.push({ color: props.textColor });
+  }
+
   return (
     <View style={containerStyles}>
       <TouchableHighlight
@@ -21,7 +27,7 @@ const InputWidthButton = (props) => {
         style={styles.buttonContainer}
         onPress={onPress}
       >
-        <Text style={styles.buttonText}>{buttonText}</Text>
+        <Text style={buttonTextStyles}>{buttonText}</Text>
       </TouchableHighlight>
       <View style={styles.border} />
       <TextInput style={styles.input} underlineColorAndroid="transparent" {...props} />
@@ -33,6 +39,7 @@ InputWidthButton.propTypes = {
   onPress: PropTypes.func,
   editable: PropTypes.bool,
   buttonText: PropTypes.string,
+  textColor: PropTypes.string,
 };
 
 export default InputWidthButton;
