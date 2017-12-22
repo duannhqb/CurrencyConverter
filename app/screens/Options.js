@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StatusBar, Platform } from 'react-native';
+import { ScrollView, StatusBar, Platform, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'proptypes';
 
@@ -18,7 +18,8 @@ class Options extends Component {
   };
 
   handleSitePress = () => {
-    console.log('press site');
+    Linking.openURL('http://fixer.io').catch(() =>
+      alert('An Error occurred when opening the link!'));
   };
 
   render() {
